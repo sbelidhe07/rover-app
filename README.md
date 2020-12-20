@@ -7,10 +7,10 @@
 # Rover Modules
 ### Inventory
 * This is a storage unit which lets Ajirayaan store important samples and items it has retrieved during exploration.
- *** For example,
- *** Water Samples - 2 units - Priority 2
- *** Rock Samples - 3 units - Priority 3
- *** Storm Shield - 2 units - Priority 1
+ ##### For example,
+ * Water Samples - 2 units - Priority 2
+ * Rock Samples - 3 units - Priority 3
+ * Storm Shield - 2 units - Priority 1
 * The inventory has a finite space.
 * We can add and remove items from the inventory. If the inventory is full and we need to add an item, we must remove items of a lower priority as required.
 ### Battery
@@ -28,7 +28,7 @@
 * Terrain. There are different kinds of terrain such as: "dirt", "water", "rock", "sand"
 
 # Simulation
-Initial configuration of the environment is as follows:
+* Initial configuration of the environment is as follows:
 POST /api/environment/configure
 Content-Type: application/json
 {
@@ -44,7 +44,7 @@ Content-Type: application/json
 [ "dirt", "dirt", "dirt", "dirt", "dirt" ]
 ]
 }
-Subsequent modifications to the environment should only be allowed through:
+* Subsequent modifications to the environment should only be allowed through:
 PATCH /api/environment
 Content-Type: application/json
 Accept: application/json
@@ -52,7 +52,7 @@ Accept: application/json
 "temperature": 20
 }
 
-Initial configuration of the rover is done as follows:
+* Initial configuration of the rover is done as follows:
 POST /api/rover/configure
 Content-Type: application/json
 {
@@ -139,20 +139,20 @@ Content-Type: application/json
 }
 ]
 }
-Rover movement is simulated using
+* Rover movement is simulated using
 POST /api/rover/move
 Content-Type: application/json
 Accept: application/json
 {
 "direction": "up"
 }
-Rover status is obtained using
+* Rover status is obtained using
 GET /api/rover/status
 Accept: application/json
 Spec
 POST /api/environment/configure
 PATCH /api/environment
-Request Interface
+* Request Interface
 type TerrainType = "dirt" | "water" | "rock" | "sand"
 type Map2D = Array<Array<TerrainType>>
 {
@@ -166,7 +166,7 @@ Response Interface
 If successful,
 200 OK
 
-Use standard error codes as necessary
+* Use standard error codes as necessary
 
 POST /api/rover/move
 Request Interface
@@ -240,8 +240,8 @@ type TerrainType = "dirt" | "water" | "rock" | "sand"
 "terrain": TerrainType
 }
 }
-If the rover's battery dies or the rover is destroyed, do not return a response
-Use standard error codes as necessary
+* If the rover's battery dies or the rover is destroyed, do not return a response
+* Use standard error codes as necessary
 
 POST /api/rover/configure
 Request Interface
@@ -287,7 +287,7 @@ type State = {
 "initial-battery": number,
 "inventory": InventoryItem[]
 }
-Test Case
+* Test Case
 Configure environment and rover using the same values given in the explanation. Then do the following
 POST /api/rover/move
 Content-Type: application/json
